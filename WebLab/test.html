@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>แบบฟอร์มประวัติแม่ค้า</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- เพิ่ม Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .btn-yellow {
+            background-color: #f8c102; /* สีเหลือง */
+            color: #fff; /* ข้อความสีขาว */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <form id="profileForm">
+            <h1 class="mb-4">แบบฟอร์มประวัติแม่ค้า</h1>
+
+            <div class="mb-3">
+                <label for="nationalId" class="form-label">เลขบัตรประชาชน</label>
+                <input type="tel" class="form-control" id="nationalId" name="nationalId" value="1234567890123" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="firstName" class="form-label">ชื่อ</label>
+                <input type="text" class="form-control" id="firstName" value="สัญญา" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="lastName" class="form-label">นามสกุล</label>
+                <input type="text" class="form-control" id="lastName" value="เครือหงษ์" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">ที่อยู่</label>
+                <textarea class="form-control" id="address" name="address" rows="4" disabled>123 หมู่ 1 ตำบลศรีสัชนาลัย อำเภอศรีสัชนาลัย จังหวัดสุโขทัย</textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="baht" class="form-label">รายได้</label>
+                <input type="number" class="form-control" id="baht" value="30000" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">อีเมล์</label>
+                <input type="email" class="form-control" id="email" value="example@gmail.com" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="tel" class="form-label">เบอร์มือถือ</label>
+                <input type="tel" class="form-control" id="tel" value="0812345678" disabled>
+            </div>
+
+            <!-- ปุ่มสำหรับการทำงานต่างๆ -->
+            <div class="mt-4">
+                <button type="button" id="editButton" class="btn btn-yellow">
+                    <i class="fas fa-edit"></i> แก้ไข
+                </button>
+                <button type="button" id="saveButton" class="btn btn-success">
+                    <i class="fas fa-save"></i> บันทึก
+                </button>
+                <button type="reset" class="btn btn-danger">
+                    <i class="fas fa-times"></i> ยกเลิก
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const editButton = document.getElementById('editButton');
+        const saveButton = document.getElementById('saveButton');
+        const formElements = document.querySelectorAll('#profileForm input, #profileForm textarea');
+
+        // ฟังก์ชันจัดการการคลิกปุ่ม "แก้ไข"
+        editButton.addEventListener('click', function() {
+            formElements.forEach(element => {
+                element.disabled = !element.disabled;
+            });
+        });
+
+        // ฟังก์ชันจัดการการคลิกปุ่ม "บันทึก"
+        saveButton.addEventListener('click', function() {
+            if (formElements[0].disabled) {
+                alert('กรุณากดปุ่ม "แก้ไข" ก่อนบันทึกข้อมูล');
+            } else {
+                // ที่นี่คุณสามารถเพิ่มฟังก์ชันเพิ่มเติมเพื่อจัดการข้อมูลที่บันทึก
+                alert('ข้อมูลถูกบันทึกแล้ว');
+                formElements.forEach(element => {
+                    element.disabled = true; // ปิดการใช้งานฟิลด์หลังจากบันทึก
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
